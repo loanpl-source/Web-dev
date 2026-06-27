@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Urrupee | Independent Loan Consultant</title>
+<meta name="description" content="Urrupee — John Doe is a licensed independent loan consultant facilitating personal, business, and car loan financing through regulated partner institutions." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: { 950: '#0B1526', 900: '#0F1B33', 800: '#152442', 700: '#1E3258' },
+          slate2: { 600: '#475569' },
+          emerald: { 600: '#0D9488', 700: '#0B7A6F' },
+        },
+        fontFamily: {
+          serif: ['Lora', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; }
+  h1, h2, h3, .font-display { font-family: 'Lora', serif; }
+  .mono-field { font-family: 'JetBrains Mono', monospace; }
+
+  /* Signature element: compliance-card stamp */
+  .verify-card {
+    position: relative;
+    border: 1px solid #CBD5E1;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(15,27,51,0.025) 0px, rgba(15,27,51,0.025) 1px, transparent 1px, transparent 14px);
+  }
+  .stamp {
+    transform: rotate(-9deg);
+    border: 2px solid #0D9488;
+    color: #0D9488;
+  }
+  .ledger-row {
+    border-bottom: 1px dashed #CBD5E1;
+  }
+  .ledger-row:last-child { border-bottom: none; }
+
+  /* Mobile nav */
+  #mobile-menu { transition: max-height 0.3s ease; overflow: hidden; }
+
+  /* Privacy modal */
+  #privacy-modal { transition: opacity 0.2s ease; }
+</style>
+</head>
+<body class="bg-white text-navy-900 antialiased">
+
+<!-- ============ HEADER / NAV ============ -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="#top" class="flex items-center">
+        <img src="img/LOGO3.png" alt="Urrupee" class="h-16 w-auto object-contain" />
+      </a>
+
+      <nav class="hidden md:flex items-center gap-9 text-sm font-medium text-slate-700">
+        <a href="#services" class="hover:text-emerald-700 transition-colors">Services</a>
+        <a href="#about" class="hover:text-emerald-700 transition-colors">About</a>
+        <a href="#verification" class="hover:text-emerald-700 transition-colors">Credentials</a>
+        <a href="#contact" class="hover:text-emerald-700 transition-colors">Contact</a>
+      </nav>
+
+      <a href="https://wa.me/15550192834" target="_blank" rel="noopener"
+         class="hidden md:inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-5 py-2.5 rounded-md transition-colors shadow-sm">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-1.746-.792-2.892-1.402-4.038-3.18-.305-.476.305-.466.876-1.552.1-.193.05-.36-.05-.51-.1-.15-.673-1.62-.92-2.166-.246-.546-.495-.47-.673-.47-.18 0-.412-.024-.62-.024-.211 0-.554.05-.85.249-.295.198-1.116 1.092-1.116 2.663 0 1.572 1.14 3.094 1.296 3.31.158.21 2.1 3.323 5.224 4.522 2.495.949 3.005.766 3.546.716.54-.05 1.766-.722 2.01-1.418.245-.696.245-1.293.171-1.418-.07-.124-.27-.198-.553-.347z"/><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.866.508 3.66 1.474 5.225L2 22l4.943-1.563a9.86 9.86 0 0 0 5.097 1.394h.004c5.46 0 9.91-4.452 9.91-9.92S17.5 2 12.04 2zm0 18.19h-.003a8.234 8.234 0 0 1-4.198-1.149l-.301-.179-3.122.987.997-3.034-.197-.312a8.215 8.215 0 0 1-1.262-4.394c0-4.55 3.706-8.255 8.267-8.255 4.56 0 8.266 3.706 8.266 8.255 0 4.55-3.707 8.081-8.447 8.081z"/></svg>
+        WhatsApp Me
+      </a>
+
+      <button id="menu-btn" class="md:hidden p-2 text-navy-900" aria-label="Toggle navigation menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden max-h-0">
+      <div class="flex flex-col gap-4 pb-6 pt-2 text-sm font-medium text-slate-700">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#verification" class="nav-link">Credentials</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="https://wa.me/15550192834" target="_blank" rel="noopener"
+           class="inline-flex items-center justify-center gap-2 bg-emerald-600 text-white font-semibold px-5 py-3 rounded-md">
+          Chat with me on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="bg-navy-900 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.06]"
+       style="background-image: linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px); background-size: 48px 48px;"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-20 md:py-28 relative">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="inline-flex items-center gap-2 text-emerald-400 text-xs font-semibold uppercase tracking-widest mb-5 border border-emerald-700/50 rounded-full px-3 py-1.5">
+          Independent &amp; Regulated Loan Facilitation
+        </span>
+        <h1 class="text-white font-serif font-semibold text-4xl md:text-5xl leading-tight mb-6">
+          Simplified Loan Solutions Built Around Your Needs
+        </h1>
+        <p class="text-slate-300 text-lg leading-relaxed mb-9 max-w-md">
+          I'm John Doe — an independent consultant who matches you with regulated lending
+          partners for personal, business, and car loan financing. No jargon,
+          just clear guidance from application to approval.
+        </p>
+        <div class="flex flex-wrap items-center gap-4">
+          <a href="https://wa.me/15550192834" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-7 py-4 rounded-md transition-colors shadow-lg shadow-emerald-900/30">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-1.746-.792-2.892-1.402-4.038-3.18-.305-.476.305-.466.876-1.552.1-.193.05-.36-.05-.51-.1-.15-.673-1.62-.92-2.166-.246-.546-.495-.47-.673-.47-.18 0-.412-.024-.62-.024-.211 0-.554.05-.85.249-.295.198-1.116 1.092-1.116 2.663 0 1.572 1.14 3.094 1.296 3.31.158.21 2.1 3.323 5.224 4.522 2.495.949 3.005.766 3.546.716.54-.05 1.766-.722 2.01-1.418.245-.696.245-1.293.171-1.418-.07-.124-.27-.198-.553-.347z"/><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.866.508 3.66 1.474 5.225L2 22l4.943-1.563a9.86 9.86 0 0 0 5.097 1.394h.004c5.46 0 9.91-4.452 9.91-9.92S17.5 2 12.04 2zm0 18.19h-.003a8.234 8.234 0 0 1-4.198-1.149l-.301-.179-3.122.987.997-3.034-.197-.312a8.215 8.215 0 0 1-1.262-4.394c0-4.55 3.706-8.255 8.267-8.255 4.56 0 8.266 3.706 8.266 8.255 0 4.55-3.707 8.081-8.447 8.081z"/></svg>
+            Chat with me on WhatsApp
+          </a>
+          <a href="#verification" class="text-slate-300 hover:text-white text-sm font-medium underline underline-offset-4">
+            View licensing &amp; verification
+          </a>
+        </div>
+      </div>
+      <div class="hidden md:flex flex-col items-center space-y-4">
+        <div class="inline-flex items-center p-2">
+          <img src="img/LOGO1.png" alt="Urrupee" class="h-80 w-80 object-cover rounded-full" />
+        </div>
+
+        <div class="bg-white/5 border border-white/10 rounded-xl p-7 w-full max-w-sm backdrop-blur-sm">
+          <p class="text-slate-400 text-xs uppercase tracking-widest font-semibold mb-5">At a glance</p>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+              <span class="text-slate-300 text-sm">Years facilitating loans</span>
+              <span class="text-white font-serif font-semibold">12+</span>
+            </div>
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+              <span class="text-slate-300 text-sm">Partner institutions</span>
+              <span class="text-white font-serif font-semibold">9</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="bg-white py-20 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-14">
+      <p class="text-emerald-700 text-xs font-semibold uppercase tracking-widest mb-3">Services</p>
+      <h2 class="font-serif font-semibold text-3xl md:text-4xl text-navy-900 mb-4">Financing guidance, matched to your situation</h2>
+      <p class="text-slate-600 leading-relaxed">
+        Every case is reviewed individually and submitted to the partner institution best
+        suited to approve it — never a one-size-fits-all application.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-6">
+      <div class="border border-slate-200 rounded-xl overflow-hidden flex flex-col">
+        <div class="bg-slate-50 aspect-[4/3] flex items-center justify-center p-5">
+          <img src="img/PERSONAL_LOAN.png" alt="Personal Loans" class="max-h-full w-auto object-contain" />
+        </div>
+        <div class="p-6 flex-1">
+          <h3 class="font-serif font-semibold text-lg text-navy-900 mb-2">Personal Loans</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Debt consolidation, medical expenses, or major purchases — matched to lenders
+            offering transparent rates and realistic repayment terms.
+          </p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl overflow-hidden flex flex-col">
+        <div class="bg-slate-50 aspect-[4/3] flex items-center justify-center p-5">
+          <img src="img/BUSINESS_LOAN.png" alt="Business and SME Loans" class="max-h-full w-auto object-contain" />
+        </div>
+        <div class="p-6 flex-1">
+          <h3 class="font-serif font-semibold text-lg text-navy-900 mb-2">Business &amp; SME Loans</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Working capital, equipment financing, and growth capital for small and
+            medium enterprises, prepared for underwriting review.
+          </p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl overflow-hidden flex flex-col">
+        <div class="bg-slate-50 aspect-[4/3] flex items-center justify-center p-5">
+          <img src="img/CAR_LOAN.png" alt="Car Loans" class="max-h-full w-auto object-contain" />
+        </div>
+        <div class="p-6 flex-1">
+          <h3 class="font-serif font-semibold text-lg text-navy-900 mb-2">Car Loans</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            New or used vehicle financing, structured with manageable EMIs and
+            straightforward documentation.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT / TRUST ============ -->
+<section id="about" class="bg-slate-50 py-20 md:py-24 border-y border-slate-200">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid md:grid-cols-5 gap-12 items-start">
+
+      <div class="md:col-span-3">
+        <p class="text-emerald-700 text-xs font-semibold uppercase tracking-widest mb-3">About</p>
+        <h2 class="font-serif font-semibold text-3xl md:text-4xl text-navy-900 mb-5">An independent advocate, not a lender</h2>
+        <p class="text-slate-600 leading-relaxed mb-4">
+          I work on your side of the table. As an independent consultant, I'm not employed
+          by any single bank — which means my only job is finding the loan structure that
+          actually fits your circumstances, then walking you through the partner institution's
+          process so nothing feels like fine print.
+        </p>
+        <p class="text-slate-600 leading-relaxed mb-8">
+          Over the past 12 years I've worked with individuals and small business owners across
+          personal, commercial, and car loan financing, coordinating directly with regulated
+          lending partners on every file I submit.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="bg-white border border-slate-200 rounded-lg p-5">
+            <p class="font-serif font-semibold text-2xl text-navy-900">12+</p>
+            <p class="text-slate-500 text-xs mt-1">Years in lending consultation</p>
+          </div>
+          <div class="bg-white border border-slate-200 rounded-lg p-5">
+            <p class="font-serif font-semibold text-2xl text-navy-900">9</p>
+            <p class="text-slate-500 text-xs mt-1">Regulated partner institutions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VERIFICATION / CONTACT ============ -->
+<section id="verification" class="bg-white py-20 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto text-center mb-14">
+      <p class="text-emerald-700 text-xs font-semibold uppercase tracking-widest mb-3">Verified Business Details</p>
+      <h2 class="font-serif font-semibold text-3xl md:text-4xl text-navy-900 mb-4">Licensing &amp; Identity Verification</h2>
+      <p class="text-slate-600 leading-relaxed">
+        Published in line with regulatory transparency standards for financial consultation services.
+      </p>
+    </div>
+
+    <div class="verify-card max-w-2xl mx-auto rounded-xl p-8 md:p-10 shadow-sm">
+      <div class="flex items-start justify-between mb-8">
+        <div>
+          <p class="text-slate-400 text-[11px] uppercase tracking-widest font-semibold mono-field">Form / ID-VRF-01</p>
+          <h3 class="font-serif font-semibold text-xl text-navy-900 mt-1">Consultant Verification Record</h3>
+        </div>
+        <div class="stamp rounded-md px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider whitespace-nowrap">
+          Verified
+        </div>
+      </div>
+
+      <div class="space-y-0">
+        <div class="ledger-row flex flex-col sm:flex-row sm:items-center justify-between py-3.5 gap-1">
+          <span class="text-slate-500 text-sm">Full Legal Name</span>
+          <span class="mono-field text-navy-900 text-sm font-medium">John Doe</span>
+        </div>
+        <div class="ledger-row flex flex-col sm:flex-row sm:items-start justify-between py-3.5 gap-1">
+          <span class="text-slate-500 text-sm">Operating Address</span>
+          <span class="mono-field text-navy-900 text-sm font-medium text-right sm:text-right">123 Financial Street, Suite 4B<br class="hidden sm:block"> City, NY 10001</span>
+        </div>
+        <div class="ledger-row flex flex-col sm:flex-row sm:items-center justify-between py-3.5 gap-1">
+          <span class="text-slate-500 text-sm">Email</span>
+          <a href="mailto:hello@urrupee.com" class="mono-field text-emerald-700 text-sm font-medium hover:underline">hello@urrupee.com</a>
+        </div>
+        <div class="ledger-row flex flex-col sm:flex-row sm:items-center justify-between py-3.5 gap-1">
+          <span class="text-slate-500 text-sm">Phone</span>
+          <span class="mono-field text-navy-900 text-sm font-medium">+1 (555) 019-2834</span>
+        </div>
+        <div class="ledger-row flex flex-col sm:flex-row sm:items-center justify-between py-3.5 gap-1">
+          <span class="text-slate-500 text-sm">WhatsApp Business Line</span>
+          <a href="https://wa.me/15550192834" target="_blank" rel="noopener" class="mono-field text-emerald-700 text-sm font-medium hover:underline">+1 (555) 019-2834</a>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between py-3.5 gap-1">
+          <span class="text-slate-500 text-sm">DSA / License Registration ID</span>
+          <span class="mono-field text-navy-900 text-sm font-medium">DSA-REG-2024-00892</span>
+        </div>
+      </div>
+
+      <p class="text-slate-400 text-xs mt-7 pt-5 border-t border-slate-200 leading-relaxed">
+        Registration ID corresponds to this consultant's Direct Selling Agent / loan facilitation
+        registration on file with applicable state authorities. Verify directly via the contact
+        details above.
+      </p>
+    </div>
+
+    <div id="contact" class="max-w-2xl mx-auto mt-10 text-center">
+      <a href="https://wa.me/15550192834" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-7 py-4 rounded-md transition-colors shadow-md">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-1.746-.792-2.892-1.402-4.038-3.18-.305-.476.305-.466.876-1.552.1-.193.05-.36-.05-.51-.1-.15-.673-1.62-.92-2.166-.246-.546-.495-.47-.673-.47-.18 0-.412-.024-.62-.024-.211 0-.554.05-.85.249-.295.198-1.116 1.092-1.116 2.663 0 1.572 1.14 3.094 1.296 3.31.158.21 2.1 3.323 5.224 4.522 2.495.949 3.005.766 3.546.716.54-.05 1.766-.722 2.01-1.418.245-.696.245-1.293.171-1.418-.07-.124-.27-.198-.553-.347z"/><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.866.508 3.66 1.474 5.225L2 22l4.943-1.563a9.86 9.86 0 0 0 5.097 1.394h.004c5.46 0 9.91-4.452 9.91-9.92S17.5 2 12.04 2zm0 18.19h-.003a8.234 8.234 0 0 1-4.198-1.149l-.301-.179-3.122.987.997-3.034-.197-.312a8.215 8.215 0 0 1-1.262-4.394c0-4.55 3.706-8.255 8.267-8.255 4.56 0 8.266 3.706 8.266 8.255 0 4.55-3.707 8.081-8.447 8.081z"/></svg>
+        Chat with me on WhatsApp
+      </a>
+      <p class="text-slate-500 text-sm mt-4">
+        Prefer email? Write to
+        <a href="mailto:hello@urrupee.com" class="text-emerald-700 font-medium hover:underline">hello@urrupee.com</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRIVACY POLICY ============ -->
+<section id="privacy" class="bg-slate-50 py-16 border-y border-slate-200">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+    <h3 class="font-serif font-semibold text-2xl text-navy-900 mb-3">Your Privacy, Respected</h3>
+    <p class="text-slate-600 leading-relaxed mb-5">
+      Phone numbers and personal details shared through WhatsApp or this site are used
+      strictly to provide the loan consultation you request. Your information is never
+      sold, rented, or shared with third parties outside of the regulated lending
+      partner relevant to your application.
+    </p>
+    <button onclick="document.getElementById('privacy-modal').classList.remove('hidden')"
+            class="text-emerald-700 font-semibold text-sm underline underline-offset-4 hover:text-emerald-800">
+      Read full Privacy Policy
+    </button>
+  </div>
+</section>
+
+<!-- Privacy Modal -->
+<div id="privacy-modal" class="hidden fixed inset-0 z-[60] bg-navy-950/70 flex items-center justify-center px-4">
+  <div class="bg-white rounded-xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-8 relative">
+    <button onclick="document.getElementById('privacy-modal').classList.add('hidden')"
+            class="absolute top-5 right-5 text-slate-400 hover:text-navy-900" aria-label="Close privacy policy">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+    <h3 class="font-serif font-semibold text-2xl text-navy-900 mb-5">Privacy Policy</h3>
+    <div class="space-y-4 text-sm text-slate-600 leading-relaxed">
+      <p><strong class="text-navy-900">Data we collect:</strong> Your name, phone number, and any details you voluntarily share when requesting a loan consultation via WhatsApp, email, or this website's contact channels.</p>
+      <p><strong class="text-navy-900">How it's used:</strong> Solely to respond to your inquiry, assess loan options, and, where you consent, forward your information to the specific regulated lending partner relevant to your request.</p>
+      <p><strong class="text-navy-900">What we never do:</strong> We never sell, rent, or trade your phone number or personal data to marketers, data brokers, or unrelated third parties.</p>
+      <p><strong class="text-navy-900">Retention:</strong> Information is retained only as long as needed to service your inquiry or as required by applicable financial recordkeeping regulations.</p>
+      <p><strong class="text-navy-900">Your control:</strong> You may request deletion of your data at any time by emailing <a href="mailto:hello@urrupee.com" class="text-emerald-700 hover:underline">hello@urrupee.com</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ COMPLIANCE FOOTER ============ -->
+<footer class="bg-navy-950 text-slate-400 py-14">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid md:grid-cols-3 gap-10 mb-10">
+      <div>
+        <div class="inline-flex items-center bg-white rounded-md px-2.5 py-1.5 mb-4">
+          <img src="img/LOGO3.png" alt="Urrupee" class="h-24 w-auto object-contain" />
+        </div>
+        <p class="text-sm leading-relaxed">
+          Independent loan consultation, facilitated through regulated financial partners.
+        </p>
+      </div>
+
+      <div>
+        <p class="text-white text-sm font-semibold mb-4">Quick Links</p>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
+          <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+          <li><a href="#verification" class="hover:text-white transition-colors">Credentials</a></li>
+          <li><button onclick="document.getElementById('privacy-modal').classList.remove('hidden')" class="hover:text-white transition-colors">Privacy Policy</button></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-white text-sm font-semibold mb-4">Contact</p>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="mailto:hello@urrupee.com" class="hover:text-white transition-colors">hello@urrupee.com</a></li>
+          <li><a href="" target="_blank" rel="noopener" class="hover:text-white transition-colors">+91 98410 07250</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-8">
+      <p class="text-xs leading-relaxed text-slate-500 max-w-4xl">
+        <strong class="text-slate-300">Disclaimer:</strong> John Doe operates as an independent
+        financial consultant and facilitator. I am not a direct lender, bank, or primary
+        financial institution. Loan approvals, interest rates, and final terms are entirely
+        subject to the underwriting guidelines of our partner regulated financial institutions.
+        We never charge upfront processing or deposit fees.
+      </p>
+      <p class="text-xs text-slate-600 mt-5">© 2026 Urrupee. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  let menuOpen = false;
+  menuBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.style.maxHeight = menuOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+  });
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.style.maxHeight = '0px';
+    });
+  });
+</script>
+</body>
+</html>
