@@ -307,6 +307,54 @@
       </div>
     </div>
 
+
+<!-- ===== Loan Enquiry Form ===== -->
+<section id="loan-enquiry" class="max-w-3xl mx-auto mt-16">
+  <div class="bg-slate-50 border border-slate-200 rounded-xl p-8">
+    <h2 class="font-serif text-3xl font-semibold text-navy-900 mb-2">Request a Loan Consultation</h2>
+    <p class="text-slate-600 mb-8">
+      Fill in your details and our consultant will contact you through WhatsApp or phone.
+    </p>
+
+    <form id="loanForm" class="space-y-5">
+      <div>
+        <label class="block mb-2 font-medium">Full Name</label>
+        <input type="text" id="name" required class="w-full border rounded-lg px-4 py-3">
+      </div>
+
+      <div>
+        <label class="block mb-2 font-medium">Mobile Number</label>
+        <input type="tel" id="phone" required class="w-full border rounded-lg px-4 py-3">
+      </div>
+
+      <div>
+        <label class="block mb-2 font-medium">Loan Type</label>
+        <select id="loan" class="w-full border rounded-lg px-4 py-3">
+          <option>Personal Loan</option>
+          <option>Home Loan</option>
+          <option>Business Loan</option>
+          <option>Car Loan</option>
+        </select>
+      </div>
+
+      <label class="flex items-start gap-3">
+        <input type="checkbox" id="consent" required class="mt-1">
+        <span class="text-sm text-slate-600">
+          I agree to receive WhatsApp messages, phone calls and SMS from Urrupee regarding my loan enquiry. I have read and agree to the
+          <a href="privacy.html" class="text-emerald-700 underline">Privacy Policy</a>.
+        </span>
+      </label>
+
+      <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-lg font-semibold">
+        Submit Enquiry
+      </button>
+
+      <p id="status" class="text-sm"></p>
+    </form>
+  </div>
+</section>
+
+
     <div id="contact" class="max-w-2xl mx-auto mt-10 text-center">
       <a href="google.com" target="_blank" rel="noopener"
          class="inline-flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-7 py-4 rounded-md transition-colors shadow-md">
@@ -331,30 +379,12 @@
       sold, rented, or shared with third parties outside of the regulated lending
       partner relevant to your application.
     </p>
-    <button onclick="document.getElementById('privacy-modal').classList.remove('hidden')"
-            class="text-emerald-700 font-semibold text-sm underline underline-offset-4 hover:text-emerald-800">
+    <a href="privacy.html"
+       class="text-emerald-700 font-semibold text-sm underline underline-offset-4 hover:text-emerald-800">
       Read full Privacy Policy
-    </button>
+    </a>
   </div>
 </section>
-
-<!-- Privacy Modal -->
-<div id="privacy-modal" class="hidden fixed inset-0 z-[60] bg-navy-950/70 flex items-center justify-center px-4">
-  <div class="bg-white rounded-xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-8 relative">
-    <button onclick="document.getElementById('privacy-modal').classList.add('hidden')"
-            class="absolute top-5 right-5 text-slate-400 hover:text-navy-900" aria-label="Close privacy policy">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-    </button>
-    <h3 class="font-serif font-semibold text-2xl text-navy-900 mb-5">Privacy Policy</h3>
-    <div class="space-y-4 text-sm text-slate-600 leading-relaxed">
-      <p><strong class="text-navy-900">Data we collect:</strong> Your name, phone number, and any details you voluntarily share when requesting a loan consultation via WhatsApp, email, or this website's contact channels.</p>
-      <p><strong class="text-navy-900">How it's used:</strong> Solely to respond to your inquiry, assess loan options, and, where you consent, forward your information to the specific regulated lending partner relevant to your request.</p>
-      <p><strong class="text-navy-900">What we never do:</strong> We never sell, rent, or trade your phone number or personal data to marketers, data brokers, or unrelated third parties.</p>
-      <p><strong class="text-navy-900">Retention:</strong> Information is retained only as long as needed to service your inquiry or as required by applicable financial recordkeeping regulations. </p>
-      <p><strong class="text-navy-900">Your control:</strong> You may request deletion of your data at any time by emailing <a href="mailto:ramesh@urrupee.in" class="text-emerald-700 hover:underline">ramesh@urrupee.in</a>.</p>
-    </div>
-  </div>
-</div>
 
 <!-- ============ COMPLIANCE FOOTER ============ -->
 <footer class="bg-navy-950 text-slate-400 py-14">
@@ -375,7 +405,7 @@
           <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
           <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
           <li><a href="#verification" class="hover:text-white transition-colors">Credentials</a></li>
-          <li><button onclick="document.getElementById('privacy-modal').classList.remove('hidden')" class="hover:text-white transition-colors">Privacy Policy</button></li>
+          <li><a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
         </ul>
       </div>
 
@@ -415,6 +445,28 @@
       mobileMenu.style.maxHeight = '0px';
     });
   });
+
+document.getElementById("loanForm")?.addEventListener("submit", async function(e){
+  e.preventDefault();
+  const data = {
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    loan: document.getElementById("loan").value,
+    consent: document.getElementById("consent").checked
+  };
+  try{
+    const response = await fetch("https://urrupee-api.loanpl021972.workers.dev/submit",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(data)
+    });
+    const result = await response.json();
+    document.getElementById("status").textContent = result.message || "Submitted successfully.";
+  }catch(err){
+    document.getElementById("status").textContent = "Submission failed. Please try again.";
+  }
+});
+
 </script>
 </body>
 </html>
